@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from django.shortcuts import render, HttpResponseRedirect, HttpResponse
 from django.views.generic import FormView, View
 from pure_pagination import Paginator
