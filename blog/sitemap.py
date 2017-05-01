@@ -1,5 +1,5 @@
 #!/use/bin/env python
-# _*_ coding:utf-8 __
+# -*- coding:utf-8 -*-
 
 from django.contrib.sitemaps import Sitemap
 from blog.models import Article

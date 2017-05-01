@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
+from __future__ import unicode_literals
 from django.db import models
-
+from django.utils.encoding import python_2_unicode_compatible
 # Create your models here.
 
 __all__ = [
@@ -11,6 +12,7 @@ __all__ = [
 ]
 
 
+@python_2_unicode_compatible
 class Categories(models.Model):
     name = models.CharField(max_length=32, unique=True, verbose_name='分类名称')
     title = models.CharField(max_length=64, verbose_name='标题')
@@ -29,6 +31,7 @@ class Categories(models.Model):
         return self.name
 
 
+@python_2_unicode_compatible
 class Article(models.Model):
     STATUS_CHOICES = (
         ('0', '发布'),
@@ -41,7 +44,8 @@ class Article(models.Model):
     body = models.TextField(verbose_name='文章内容')
     created_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     last_modified_time = models.DateTimeField('修改时间', auto_now=True)
-    status = models.CharField(default='0', max_length=1, choices=STATUS_CHOICES, verbose_name='文章状态')
+    status = models.CharField(
+        default='0', max_length=1, choices=STATUS_CHOICES, verbose_name='文章状态')
     categories = models.ForeignKey("Categories", verbose_name='分类')
     tag = models.ManyToManyField("Tag", verbose_name='标签')
 
@@ -54,6 +58,7 @@ class Article(models.Model):
         return self.title
 
 
+@python_2_unicode_compatible
 class Links(models.Model):
     name = models.CharField(max_length=32, unique=True, verbose_name='友情链接名字')
     url = models.URLField(unique=True, verbose_name='URL')
@@ -68,6 +73,7 @@ class Links(models.Model):
         return self.name
 
 
+@python_2_unicode_compatible
 class Tag(models.Model):
     name = models.CharField(max_length=32, unique=True, verbose_name='标签名称')
     created_time = models.DateTimeField('创建时间', auto_now_add=True)

@@ -1,5 +1,5 @@
 #!/use/bin/env python
-# _*_ coding:utf-8 __
+# -*- coding:utf-8 -*-
 
 from django.contrib.syndication.views import Feed
 from .models import Article
